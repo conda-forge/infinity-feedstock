@@ -1,22 +1,17 @@
 {% set name = "infinity" %}
-{% set version = "1.4" %}
-{% set bundle = "tar.gz" %}
-{% set hash_type = "sha256" %}
-{% set hash = "dc4aa138d7e366fc00d2e741e32c78a0fecd16b74f8daeb3f7408b459668005c" %}
-{% set build = 1 %}
+{% set version = "1.5" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.{{ bundle }}
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ bundle }}
-  {{ hash_type }}: {{ hash }}
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 8daa7c15ce2100fdccfde212337e0cd5cf085869f54dc2634b6c30d61461ecda
 
 build:
   noarch: python
-  number: {{ build }}
+  number: 0
   script: python setup.py install --single-version-externally-managed --record=record.txt
 
 requirements:
@@ -30,6 +25,10 @@ requirements:
 test:
   imports:
     - infinity
+ commands:
+    - pip check
+ requires: 
+    - pip
 
 about:
   home: https://github.com/kvesteri/infinity
