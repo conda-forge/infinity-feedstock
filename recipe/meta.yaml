@@ -25,9 +25,9 @@ requirements:
 test:
   imports:
     - infinity
- commands:
+  commands:
     - pip check
- requires: 
+  requires: 
     - pip
 
 about:
