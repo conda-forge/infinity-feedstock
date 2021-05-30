@@ -12,10 +12,11 @@ source:
 build:
   noarch: python
   number: 0
-  script: python setup.py install --single-version-externally-managed --record=record.txt
+  script:  {{ PYTHON }} -m pip install . -vv
 
 requirements:
-  build:
+  host:
+    - pip
     - python >=3.6
     - setuptools
 
@@ -33,7 +34,7 @@ test:
 about:
   home: https://github.com/kvesteri/infinity
   license_file: LICENSE
-  license: BSD 3-Clause
+  license: BSD-3-Clause
   license_family: BSD
   summary: 'All-in-one infinity value for Python. Can be compared to any object.'
   dev_url: https://github.com/kvesteri/infinity
